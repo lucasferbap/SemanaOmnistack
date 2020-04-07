@@ -4,7 +4,7 @@
 
      async index(request, response) {
          const [count] = await repository.countRecords();
-         const incidents = await repository.findAllPaged(request.query ? 1 : request.query.page);
+         const incidents = await repository.findAllPaged(request.query? request.query.page : 1);
          response.header('X-Total-Count', count['count(*)']);
          response.header('X-Total-Page', Math.ceil((count['count(*)'] / 5)));
          return response.json(incidents)

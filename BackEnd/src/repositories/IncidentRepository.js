@@ -6,7 +6,7 @@ module.exports = {
         return connection('incident')
             .join('ongs', 'ongs.id', '=', 'incident.ong_id')
             .limit(5)
-            .offset((page - 1) * 5)
+            .offset((parseInt(page) - 1) * 5)
             .select(
                 [
                     'incident.*',
